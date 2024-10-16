@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Sensors</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-dark text-light">
+<div class="container mt-5">
+  <h2>Registered Sensors</h2>
+  <br>
+  <br>
+  <a href="/sensors/add" class="btn btn-outline-light btn-lg">Add Sensor</a>
+  <br>
+  <br>
+  <br>
+  <table class="table table-sm table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Sensor Name</th>
+      <th scope="col">Sensor Type</th>
+      <th scope="col">Sensor Pin</th>
+      <th scope="col">Sensor Location</th>
+      <th scope="col">Sensor Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sensor, iterStat : ${sensors}">
+      <th scope="row" th:text="${iterStat.index + 1}"></th>
+      <td th:text="${sensor.sensorName}"></td>
+      <td th:text="${sensor.sensorType}"></td>
+      <td th:text="${sensor.sensorPin}"></td>
+      <td th:text="${sensor.sensorLocation}"></td>
+      <td th:text="${sensor.sensorStatus}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
