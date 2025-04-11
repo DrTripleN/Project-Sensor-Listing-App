@@ -11,8 +11,8 @@
   <br>
   <a href="/sensors/add" class="btn btn-outline-light btn-lg">Add Sensor</a>
   <br><br>
-  <table class="table table-sm table-dark">
-    <thead>
+  <table class="table table-sm table-info">
+  <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Sensor Name</th>
@@ -33,7 +33,7 @@
       <td th:text="${sensor.sensorStatus}"></td><td>
       <a th:href="@{|/sensors/edit/${sensor.sensorID}|}" class="btn btn-primary btn-sm">Edit</a>
       <a th:href="@{|/sensors/delete/${sensor.sensorID}|}" class="btn btn-danger btn-sm"
-         onclick="return confirm('Are you sure you want to delete this sensor?');">Delete</a>
+         onclick="return confirm('Are you sure you want to delete  sensor?');">Delete</a>
     </td>
     </tr>
     </tbody>
