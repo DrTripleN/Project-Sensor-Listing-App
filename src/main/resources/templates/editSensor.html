@@ -8,7 +8,7 @@
 <body class="bg-dark text-light">
 <div class="container mt-5">
   <h2>Edit Sensor</h2>
-  <form th:action="@{|/sensors/edit/${sensor.sensorID}|}" th:object="${sensor}" method="post" class="bg-secondary p-4 rounded">
+  <form th:action="@{|/sensors/edit/${sensor.sensorID}|}" th:object="${sensor}" method="post" class="bg-success p-4 rounded">
     <div class="form-group">
       <label for="sensorName">Sensor Name:</label>
       <input type="text" id="sensorName" th:field="*{sensorName}" class="form-control" required>
