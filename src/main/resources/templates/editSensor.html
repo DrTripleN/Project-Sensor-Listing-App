@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Sensor</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-dark text-light">
+<div class="container mt-5">
+  <h2>Edit Sensor</h2>
+  <form th:action="@{|/sensors/edit/${sensor.sensorID}|}" th:object="${sensor}" method="post" class="bg-secondary p-4 rounded">
+    <div class="form-group">
+      <label for="sensorName">Sensor Name:</label>
+      <input type="text" id="sensorName" th:field="*{sensorName}" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="sensorType">Sensor Type:</label>
+      <input type="text" id="sensorType" th:field="*{sensorType}" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="sensorPin">Sensor Pin:</label>
+      <input type="number" id="sensorPin" th:field="*{sensorPin}" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="sensorLocation">Sensor Location:</label>
+      <input type="text" id="sensorLocation" th:field="*{sensorLocation}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="sensorStatus">Sensor Status:</label>
+      <select id="sensorStatus" th:field="*{sensorStatus}" class="form-control">
+        <option value="ON" th:selected="${sensor.sensorStatus == 'ON'}">ON</option>
+        <option value="OFF" th:selected="${sensor.sensorStatus == 'OFF'}">OFF</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Sensor</button>
+    <a href="/sensors" class="btn btn-secondary ml-2">Back to Sensor List</a>
+  </form>
+</div>
+</body>
+</html>
