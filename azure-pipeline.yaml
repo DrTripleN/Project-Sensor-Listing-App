@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+
+  - task: SonarQubePrepare@4
+    inputs:
+      SonarQube: 'SonarCloudConnection'  # Replace with your service connection name
+      scannerMode: 'CLI'
+      configMode: 'manual'
+      cliProjectKey: 'nneedha1_COMMP367GROUPPROJECT'  # Replace with your project key
+      cliProjectName: 'COMMP367GROUPPROJECT'  # Replace with your project name
+      cliSources: '.'
+
+  - script: |
+      mvn clean install
+    displayName: 'Build Project'
+
+  - script: |
+      mvn test
+    displayName: 'Run Unit Tests'
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/TEST-*.xml'
+      testRunTitle: 'Test Results'
+
+  - script: |
+      mvn sonar:sonar
+    displayName: 'Run SonarQube Analysis'
